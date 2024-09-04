@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 const PersonalInfo = () => {
   const [formData, setFormData] = useState({
@@ -11,11 +12,13 @@ const PersonalInfo = () => {
     phone: '',
   });
 
+  const navigate = useNavigate(); // Initialize navigate
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Validate the phone field for this example
+    // Validate the phone field
     if (name === 'phone' && value.trim() === '') {
       setErrors((prev) => ({ ...prev, phone: 'This field is required' }));
     } else {
@@ -35,7 +38,8 @@ const PersonalInfo = () => {
     // Form submission logic here (e.g., send to backend)
     console.log('Form Data Submitted:', formData);
 
-    // You can replace the above log with an API call
+    // Navigate to the Select Plan page
+    navigate('/select-plan'); // Ensure '/select-plan' matches the route path in your routing configuration
   };
 
   return (

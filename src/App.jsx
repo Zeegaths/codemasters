@@ -1,18 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import PersonalInfo from './components/PersonalInfo'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import PersonalInfo from './components/PersonalInfo';
+import SelectPlan from './components/SelectPlan'; 
+import AddOns from './components/AddOns';
+import Summary from './components/Summary';
+import ThankYou from './components/ThankYou';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <PersonalInfo />
-    
-    </>
-  )
+    <Router>
+      <Routes>
+        {/* Define the route for the PersonalInfo page */}
+        <Route path="/" element={<PersonalInfo />} />
+
+        {/* Define the route for the SelectPlan page */}
+        <Route path="/select-plan" element={<SelectPlan />} />
+
+
+        <Route path="/addons" element={<AddOns />} />
+
+        <Route path="/summary" element={<Summary />} />
+
+        <Route path="/thankyou" element={<ThankYou />} />
+
+        
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
